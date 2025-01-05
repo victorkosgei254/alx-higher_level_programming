@@ -5,5 +5,5 @@ if [ -z "$PYFILE" ];then
  exit 1
 fi
 
-python3 "$PYFILE"
+python "$PYFILE"
 
