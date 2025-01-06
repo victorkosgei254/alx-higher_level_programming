@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ -z "$PYFILE" ]; then
+  echo "Error: PYFILE environment variable is not set."
+  exit 1
+fi
+
+if [ ! -f "$PYFILE" ]; then
+  echo "Error: $PYFILE not found."
+  exit 1
+fi
+
+# Compile the Python file using python3 -m py_compile
+python3 -m py_compile "$PYFILE"
+
+# Get the base name and add 'c' to it
+OUTPUT_FILE="${PYFILE}c"
+
+# Rename the compiled file to include 'c'
+mv "${PYFILE}c" "$OUTPUT_FILE"
+
+# Print success message
+echo "Compilation successful: $OUTPUT_FILE"
